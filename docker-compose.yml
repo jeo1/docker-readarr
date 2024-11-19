@@ -6,7 +6,7 @@ networks:
 
 services:
   readarr-setup-nginx:
-    build: ./build/setup
+    build: ./build
     image: readarr-setup
     pull_policy: build
     container_name: readarr-setup
