@@ -1,38 +1,4 @@
----
-<<<<<<< HEAD
 services:
-=======
-networks:
-  macvlan_network:
-    external: true
-    name: "${DOCKER_NETWORK}"
-
-services:
-  readarr-setup-nginx:
-    build: ./build
-    image: readarr-setup
-    pull_policy: build
-    container_name: readarr-setup
-    volumes:
-      - "${SSL}:/ssl"
-      - "${NGINX}:/nginx"
-
-  nginx:
-    image: nginx:latest
-    pull_policy: always
-    container_name: readarr-nginx
-    restart: always
-    volumes:
-      - "${NGINX}/nginx.conf:/etc/nginx/nginx.conf"
-      - "${SSL}:/ssl"
-    networks:
-      macvlan_network:
-        ipv4_address: "${IP_ADDRESS}"
-    depends_on:
-      readarr-setup-nginx:
-        condition: service_completed_successfully
-
->>>>>>> 10c190892ee1e3dcbb3eafc6c51e0615a464bb7f
   readarr:
     image: lscr.io/linuxserver/readarr:develop
     pull_policy: always
@@ -47,4 +13,3 @@ services:
       - "${DOWNLOADS}:/downloads"
     restart: always
     network_mode: "service:nginx"
-
