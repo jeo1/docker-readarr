@@ -12,4 +12,5 @@ services:
       - "${BOOKS}:/books"
       - "${DOWNLOADS}:/downloads"
     restart: always
-    network_mode: "service:nginx"
+    ports:
+      - 8787:8787
